@@ -101,7 +101,8 @@
       "Effect": "Allow",
       "Action": [
         "logs:CreateLogGroup",
-        "logs:DescribeLogGroups"
+        "logs:DescribeLogGroups",
+        "logs:PutRetentionPolicy"
       ],
       "Resource": [
         "*"
