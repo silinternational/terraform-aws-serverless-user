@@ -44,6 +44,22 @@ resource "aws_iam_user_policy_attachment" "serverless" {
 }
 
 /*
+ * If enable_api_gateway is true, add policy
+ */
+data "template_file" "api_gateway_policy" {
+  template = file("${path.module}/api-gateway-policy.json")
+
+  vars = {
+    aws_region = var.aws_region
+  }
+}
+resource "aws_iam_user_policy" "api_gateway_policy" {
+  count  = var.enable_api_gateway ? 1 : 0
+  policy = data.template_file.api_gateway_policy.rendered
+  user   = aws_iam_user.serverless.name
+}
+
+/*
  * If there are any extra_policies, for_each add to user
  */
 resource "aws_iam_user_policy" "extra_policies" {
