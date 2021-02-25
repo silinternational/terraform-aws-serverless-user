@@ -15,7 +15,9 @@ if needed as well.
 ## Optional Inputs 
  - `extra_policies` - Optionally provide additional inline policies to attach to user. Default: `[]`
  - `policy_override` - Optionally provide a json policy to use instead of default. Default: `""`
- - `username` - ptionally provide a username for the serverless user. It defaults to `app_name-app_env-serverless`
+ - `username` - Optionally provide a username for the serverless user. It defaults to `app_name-app_env-serverless`
+ - `enable_api_gateway` - Optionally enable API Gateway related permissions. 
+                          Needed for lambda functions that will be accessed via URL endpoints. Default: `false` 
 
 ## Outputs
  - `aws_access_key_id` - The new IAM user's access key ID
