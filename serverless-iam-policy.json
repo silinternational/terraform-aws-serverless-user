@@ -22,7 +22,7 @@
         "cloudformation:UpdateStack"
       ],
       "Resource": [
-        "arn:aws:cloudformation:${aws_region}:*:stack/${app_name}/*"
+        "arn:aws:cloudformation:${aws_region}:*:stack/${app_name}-*/*"
       ]
     },
     {
