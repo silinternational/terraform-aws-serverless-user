@@ -2,35 +2,33 @@
 
 This module creates an IAM user with a limited set of permissions such that the 
 [Serverless](https://www.serverless.com/) 
-framework can do it's job of creating and deploying lambda functions. The IAM policy included
+framework can do its job of creating and deploying lambda functions. The IAM policy included
 as the default policy is known to work in multiple situations in our context and can hopefully
 be useful for others. Additional parameters are supported to augment or replace the policy 
 if needed as well. 
 
 ## Required Inputs
- - `app_env` - A short name for application environment, example: `prod`
- - `app_name` - A short name for this application, example: `backup-service`
+ - `app_name`   - A short name for this application, example: `backup-service`
  - `aws_region` - A valid AWS region where this lambda will be deployed, example: `us-east-1`
 
 ## Optional Inputs 
- - `extra_policies` - Optionally provide additional inline policies to attach to user. Default: `[]`
- - `policy_override` - Optionally provide a json policy to use instead of default. Default: `""`
- - `username` - Optionally provide a username for the serverless user. It defaults to `app_name-app_env-serverless`
+ - `extra_policies`     - Optionally provide additional inline policies to attach to user. Default: `[]`
+ - `policy_override`    - Optionally provide a json policy to use instead of default. Default: `""`
+ - `username`           - Optionally provide a username for the serverless user. It defaults to `app_name-app_env-serverless`
  - `enable_api_gateway` - Optionally enable API Gateway related permissions. 
                           Needed for lambda functions that will be accessed via URL endpoints. Default: `false` 
 
 ## Outputs
- - `aws_access_key_id` - The new IAM user's access key ID
- - `aws_secret_access_key` - The new IAM user's secret access key
+ - `aws_access_key_id`      - The new IAM user's access key ID
+ - `aws_secret_access_key`  - The new IAM user's secret access key
 
 ## Usage Example
 
 ```hcl
 module "serverless-user" {
   source = "silinternational/serverless-user/aws"
-  version = "1.0.0"
+  version = "0.6.0"
   
-  app_env = "testing"
   app_name = "serverless-user"
   aws_region = "us-east-1"
 }
