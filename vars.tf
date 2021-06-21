@@ -1,8 +1,3 @@
-variable "app_env" {
-  type        = string
-  description = "A short name for application environment, example: prod"
-}
-
 variable "app_name" {
   type        = string
   description = "A short name for this application, example: backup-service"

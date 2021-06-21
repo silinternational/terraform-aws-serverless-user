@@ -2,7 +2,7 @@
  * Create IAM user for Serverless
  */
 resource "aws_iam_user" "serverless" {
-  name = var.username != "" ? var.username : "${var.app_name}-${var.app_env}-serverless"
+  name = var.username != "" ? var.username : "${var.app_name}-serverless"
 }
 
 /*
@@ -20,7 +20,6 @@ data "template_file" "serverless_policy" {
 
   vars = {
     app_name   = var.app_name
-    app_env    = var.app_env
     aws_region = var.aws_region
   }
 }
@@ -29,7 +28,7 @@ data "template_file" "serverless_policy" {
  * Create IAM policy from template content or var.policy_override if set
  */
 resource "aws_iam_policy" "serverless" {
-  name        = "${var.app_name}-${var.app_env}-serverless"
+  name        = "${var.app_name}-serverless"
   description = "Serverless deployment policy"
 
   policy = var.policy_override != "" ? var.policy_override : data.template_file.serverless_policy.rendered
