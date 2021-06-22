@@ -102,6 +102,7 @@
       "Action": [
         "logs:CreateLogGroup",
         "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams",
         "logs:PutRetentionPolicy"
       ],
       "Resource": [

@@ -27,7 +27,8 @@
         "arn:aws:apigateway:${aws_region}::/apikeys",
         "arn:aws:apigateway:${aws_region}::/apikeys/*",
         "arn:aws:apigateway:${aws_region}::/domainnames",
-        "arn:aws:apigateway:${aws_region}::/domainnames/*"
+        "arn:aws:apigateway:${aws_region}::/domainnames/*",
+        "arn:aws:apigateway:${aws_region}::/tags/*"
       ]
     },
     {
