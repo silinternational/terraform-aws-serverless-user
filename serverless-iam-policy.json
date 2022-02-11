@@ -19,7 +19,11 @@
         "cloudformation:CreateUploadBucket",
         "cloudformation:DeleteStack",
         "cloudformation:Describe*",
-        "cloudformation:UpdateStack"
+        "cloudformation:UpdateStack",
+        "cloudformation:DescribeChangeSet",
+        "cloudformation:DeleteChangeSet",
+        "cloudformation:CreateChangeSet",
+        "cloudformation:ExecuteChangeSet"
       ],
       "Resource": [
         "arn:aws:cloudformation:${aws_region}:*:stack/${app_name}*/*"
