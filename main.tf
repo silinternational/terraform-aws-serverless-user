@@ -15,13 +15,13 @@ resource "aws_iam_access_key" "serverless" {
 /*
  * Use policy template to generate IAM policy for user
  */
-data "template_file" "serverless_policy" {
-  template = file("${path.module}/serverless-iam-policy.json")
-
-  vars = {
-    app_name   = var.app_name
-    aws_region = var.aws_region
-  }
+locals {
+  serverless_policy = templatefile("${path.module}/serverless-iam-policy.json",
+    {
+      app_name   = var.app_name
+      aws_region = var.aws_region
+    }
+  )
 }
 
 /*
@@ -31,7 +31,7 @@ resource "aws_iam_policy" "serverless" {
   name        = "${var.app_name}-serverless"
   description = "Serverless deployment policy"
 
-  policy = var.policy_override != "" ? var.policy_override : data.template_file.serverless_policy.rendered
+  policy = var.policy_override != "" ? var.policy_override : local.serverless_policy
 }
 
 /*
@@ -45,16 +45,17 @@ resource "aws_iam_user_policy_attachment" "serverless" {
 /*
  * If enable_api_gateway is true, add policy
  */
-data "template_file" "api_gateway_policy" {
-  template = file("${path.module}/api-gateway-policy.json")
-
-  vars = {
-    aws_region = var.aws_region
-  }
+locals {
+  api_gateway_policy = templatefile("${path.module}/api-gateway-policy.json",
+    {
+      aws_region = var.aws_region
+    }
+  )
 }
+
 resource "aws_iam_user_policy" "api_gateway_policy" {
   count  = var.enable_api_gateway ? 1 : 0
-  policy = data.template_file.api_gateway_policy.rendered
+  policy = local.api_gateway_policy
   user   = aws_iam_user.serverless.name
 }
 
@@ -65,4 +66,4 @@ resource "aws_iam_user_policy" "extra_policies" {
   for_each = toset(var.extra_policies)
   policy   = each.key
   user     = aws_iam_user.serverless.name
-} 
+}
