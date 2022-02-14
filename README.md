@@ -14,7 +14,7 @@ if needed as well.
 ## Optional Inputs 
  - `extra_policies`     - Optionally provide additional inline policies to attach to user. Default: `[]`
  - `policy_override`    - Optionally provide a json policy to use instead of default. Default: `""`
- - `username`           - Optionally provide a username for the serverless user. It defaults to `app_name-app_env-serverless`
+ - `username`           - Optionally provide a username for the serverless user. It defaults to `app_name-serverless`
  - `enable_api_gateway` - Optionally enable API Gateway related permissions. 
                           Needed for lambda functions that will be accessed via URL endpoints. Default: `false` 
 
@@ -27,7 +27,7 @@ if needed as well.
 ```hcl
 module "serverless-user" {
   source = "silinternational/serverless-user/aws"
-  version = "0.6.0"
+  version = "0.1.0"
   
   app_name = "serverless-user"
   aws_region = "us-east-1"
@@ -37,7 +37,8 @@ output "serverless-user-access-key-id" {
   value = module.serverless-user.aws_access_key_id
 }
 output "serverless-user-secret-access-key" {
-  value = module.serverless-user.aws_secret_access_key
+  value     = module.serverless-user.aws_secret_access_key
+  sensitive = true
 }
 ```
 

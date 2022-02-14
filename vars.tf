@@ -27,6 +27,6 @@ variable "policy_override" {
 
 variable "username" {
   type        = string
-  description = "Optionally provide a username for the serverless user. It defaults to app_name-app_env-serverless"
+  description = "Optionally provide a username for the serverless user. It defaults to app_name-serverless"
   default     = ""
 }
