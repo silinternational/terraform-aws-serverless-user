@@ -7,8 +7,10 @@ as the default policy is known to work in multiple situations in our context and
 be useful for others. Additional parameters are supported to augment or replace the policy 
 if needed as well. 
 
+This module is published in [Terraform Registry](https://registry.terraform.io/modules/silinternational/serverless-user/aws/latest).
+
 ## Required Inputs
- - `app_name`   - A short name for this application, example: `backup-service`
+ - `app_name`   - A short name for this application, example: `backup-service`. description = "A short name for this application, example: backup-service. Must be 24 characters or less, including the stage name and a hyphen. If only one stage is used, the app_name can use the entire 24 characters."
  - `aws_region` - A valid AWS region where this lambda will be deployed, example: `us-east-1`
 
 ## Optional Inputs 
