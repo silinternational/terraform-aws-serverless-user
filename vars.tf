@@ -1,6 +1,6 @@
 variable "app_name" {
   type        = string
-  description = "A short name for this application, example: backup-service"
+  description = "A short name for this application, example: backup-service. Must be 24 characters or less, including the stage name and a hyphen."
 }
 
 variable "aws_region" {
@@ -9,8 +9,9 @@ variable "aws_region" {
 }
 
 variable "enable_api_gateway" {
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
+  description = "If true, an additional policy will be attached for deployment to API Gateway"
 }
 
 variable "extra_policies" {
