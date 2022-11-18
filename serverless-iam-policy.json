@@ -71,6 +71,8 @@
         "lambda:InvokeFunction",
         "lambda:PublishVersion",
         "lambda:RemovePermission",
+        "lambda:TagResource",
+        "lambda:UntagResource",
         "lambda:Update*",
         "lambda:PutFunctionEventInvokeConfig",
         "lambda:DeleteFunctionEventInvokeConfig"
