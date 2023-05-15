@@ -1,0 +1,25 @@
+module "minimal" {
+  source = "../"
+
+  app_name   = "test"
+  aws_region = local.aws_region
+}
+
+module "all" {
+  source = "../"
+
+  app_name           = "test"
+  aws_region         = local.aws_region
+  enable_api_gateway = true
+  extra_policies     = ["extra_policies"]
+  policy_override    = "policy_override"
+  username           = "test_user"
+}
+
+provider "aws" {
+  region = local.aws_region
+}
+
+locals {
+  aws_region = "us-east1"
+}
