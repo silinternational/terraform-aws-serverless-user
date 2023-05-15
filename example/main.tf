@@ -1,7 +1,6 @@
 module "serverless-user" {
-  source  = "silinternational/serverless-user/aws"
-  version = "0.1.0"
+  source = "../"
 
-  app_name   = "serverless-user"
+  app_name = "serverless-user"
   aws_region = var.aws_region
 }
