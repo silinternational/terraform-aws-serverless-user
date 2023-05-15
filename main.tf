@@ -18,7 +18,7 @@ resource "aws_iam_access_key" "serverless" {
 locals {
   serverless_policy = templatefile("${path.module}/serverless-iam-policy.json",
     {
-      app_name = var.app_name
+      app_name   = var.app_name
       aws_region = var.aws_region
     }
   )
