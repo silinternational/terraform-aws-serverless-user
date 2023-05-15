@@ -22,7 +22,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: example
 
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -33,10 +32,14 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
 
-    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      run: terraform init
-
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
-      run: terraform fmt -check
+      run: terraform fmt -check -diff -recursive
+
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: terraform -chdir=test init
+
+    # Validate the files, referring only to the configuration and not accessing any remote services
+    - name: Terraform Validate
+      run: terraform -chdir=test validate
