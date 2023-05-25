@@ -1,3 +1,7 @@
+locals {
+  aws_region_policy = var.aws_region_policy == "" ? var.aws_region : var.aws_region_policy
+}
+
 /*
  * Create IAM user for Serverless
  */
@@ -19,7 +23,7 @@ locals {
   serverless_policy = templatefile("${path.module}/serverless-iam-policy.json",
     {
       app_name   = var.app_name
-      aws_region = var.aws_region
+      aws_region = local.aws_region_policy
     }
   )
 }
@@ -48,7 +52,7 @@ resource "aws_iam_user_policy_attachment" "serverless" {
 locals {
   api_gateway_policy = templatefile("${path.module}/api-gateway-policy.json",
     {
-      aws_region = var.aws_region
+      aws_region = local.aws_region_policy
     }
   )
 }
