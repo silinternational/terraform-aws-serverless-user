@@ -10,6 +10,7 @@ module "all" {
 
   app_name           = "test"
   aws_region         = local.aws_region
+  aws_region_policy  = "*"
   enable_api_gateway = true
   extra_policies     = ["extra_policies"]
   policy_override    = "policy_override"
@@ -22,4 +23,13 @@ provider "aws" {
 
 locals {
   aws_region = "us-east1"
+}
+
+terraform {
+  required_version = ">= 1.0"
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+  }
 }

@@ -8,6 +8,11 @@ variable "aws_region" {
   description = "A valid AWS region where this lambda will be deployed"
 }
 
+variable "aws_region_policy" {
+  description = "The region to use in creating the IAM policy document. Use \"*\" to allowing deployment to all regions."
+  default     = "us-east-1"
+}
+
 variable "enable_api_gateway" {
   type        = bool
   default     = false

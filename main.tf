@@ -19,7 +19,7 @@ locals {
   serverless_policy = templatefile("${path.module}/serverless-iam-policy.json",
     {
       app_name   = var.app_name
-      aws_region = var.aws_region
+      aws_region = var.aws_region_policy
     }
   )
 }
@@ -48,7 +48,7 @@ resource "aws_iam_user_policy_attachment" "serverless" {
 locals {
   api_gateway_policy = templatefile("${path.module}/api-gateway-policy.json",
     {
-      aws_region = var.aws_region
+      aws_region = var.aws_region_policy
     }
   )
 }
