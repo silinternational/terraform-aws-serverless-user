@@ -14,6 +14,7 @@ This module is published in [Terraform Registry](https://registry.terraform.io/m
  - `aws_region` - A valid AWS region where this lambda will be deployed, example: `us-east-1`
 
 ## Optional Inputs 
+ - `aws_region_policy`  - The region to use in creating the IAM policy document. Use "*" to allowing deployment to all regions. Default: `"us-east-1"`
  - `extra_policies`     - Optionally provide additional inline policies to attach to user. Default: `[]`
  - `policy_override`    - Optionally provide a json policy to use instead of default. Default: `""`
  - `username`           - Optionally provide a username for the serverless user. It defaults to `app_name-serverless`
