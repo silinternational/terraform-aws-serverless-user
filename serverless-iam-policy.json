@@ -113,7 +113,9 @@
         "logs:CreateLogGroup",
         "logs:DescribeLogGroups",
         "logs:DescribeLogStreams",
-        "logs:PutRetentionPolicy"
+        "logs:PutRetentionPolicy",
+        "logs:TagResource",
+        "logs:UntagResource"
       ],
       "Resource": [
         "*"
