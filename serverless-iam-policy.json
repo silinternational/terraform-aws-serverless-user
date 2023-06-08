@@ -95,6 +95,7 @@
         "iam:PassRole"
       ],
       "Resource": [
+        "arn:aws:iam::*:role/${app_name}*-lambdaRole",
         "arn:aws:iam::*:role/${app_name}*-${aws_region}-lambdaRole"
       ]
     },
