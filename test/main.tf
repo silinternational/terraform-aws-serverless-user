@@ -16,11 +16,7 @@ module "all" {
 }
 
 provider "aws" {
-  region = local.aws_region
-}
-
-locals {
-  aws_region = "us-east-1"
+  region = "us-east-1"
 }
 
 terraform {
