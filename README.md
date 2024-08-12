@@ -11,7 +11,6 @@ This module is published in [Terraform Registry](https://registry.terraform.io/m
 
 ## Required Inputs
  - `app_name`   - A short name for this application, example: `backup-service`. Must be 24 characters or less, including the stage name and a hyphen. If only one stage is used, the app_name can use the entire 24 characters."
- - `aws_region` - A valid AWS region where this lambda will be deployed, example: `us-east-1`
 
 ## Optional Inputs 
  - `aws_region_policy`  - The region to use in creating the IAM policy document. Use "*" to allowing deployment to all regions. Default: `"us-east-1"`
@@ -33,7 +32,6 @@ module "serverless-user" {
   version = "0.1.0"
   
   app_name = "serverless-user"
-  aws_region = "us-east-1"
 }
 
 output "serverless-user-access-key-id" {

@@ -1,15 +1,13 @@
 module "minimal" {
   source = "../"
 
-  app_name   = "test"
-  aws_region = local.aws_region
+  app_name = "test"
 }
 
 module "all" {
   source = "../"
 
   app_name           = "test"
-  aws_region         = local.aws_region
   aws_region_policy  = "*"
   enable_api_gateway = true
   extra_policies     = ["extra_policies"]
