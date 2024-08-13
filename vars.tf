@@ -3,11 +3,6 @@ variable "app_name" {
   description = "A short name for this application, example: backup-service. Must be 24 characters or less, including the stage name and a hyphen."
 }
 
-variable "aws_region" {
-  type        = string
-  description = "A valid AWS region where this lambda will be deployed"
-}
-
 variable "aws_region_policy" {
   description = "The region to use in creating the IAM policy document. Use \"*\" to allowing deployment to all regions."
   default     = "us-east-1"

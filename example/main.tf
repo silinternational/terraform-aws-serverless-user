@@ -2,8 +2,7 @@ module "serverless-user" {
   source  = "silinternational/serverless-user/aws"
   version = ">= 0.1.3"
 
-  app_name   = "serverless-user"
-  aws_region = var.aws_region
+  app_name = "serverless-user"
 
   username = "app_serverless_username"
   extra_policies = jsonencode([
